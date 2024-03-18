@@ -1,12 +1,10 @@
-import { useLocation } from "react-router-dom";
-import { useLayoutStore } from "../stores/layout";
-import { useHolding } from "../hooks/useHolding";
 import { useEffect, useRef } from "react";
+import { useHolding } from "../hooks/useHolding";
+import { useLayoutStore } from "../stores/layout";
 import Navigation from "../views/home/Navigation";
 import NavigationExpanded from "../views/home/NavigationExpanded";
 
 export default function Home() {
-    const location = useLocation();
     const { playlistTabWidth, mainTabWidth, playingTabWidth, setPlaylistTabWidth } =
         useLayoutStore();
     const resizeBarOneRef = useRef<HTMLDivElement>(null);
@@ -42,9 +40,10 @@ export default function Home() {
             >
                 <div className="flex size-full">
                     <div
-                        className="min-w-18 transition-all"
+                        className="min-w-18"
                         style={{
                             width: `${playlistTabWidth}px`,
+                            transition: playlistTabWidth > 72 ? "width" : "none",
                         }}
                     >
                         {playlistTabWidth == 72 ? (

@@ -9,13 +9,18 @@ export default {
                 18: "4.5rem",
                 83: "20.75rem",
             },
+            width: {
+                47: "11.75rem",
+            },
             minWidth: {
                 18: "4.5rem",
+                47: "11.75rem",
                 70: "17.5rem",
             },
             colors: {
                 primary: "#121212",
                 secondary: "#B3B3B3",
+                subdued: "#A7A7A7"
             },
             keyframes: {
                 "fade-in": {
