@@ -23,12 +23,13 @@ export default function Home() {
             if (resizeBarOneIsHolding) {
                 if (e.x > 584 && width >= 1024) updatePlaylistTabWidth(e.x > 592 ? 592 : e.x);
                 else if (e.x > 520 && width >= 1024) updatePlaylistTabWidth(584);
+                else if (e.x <= 170) updatePlaylistTabWidth(72);
                 else if (playlistTabWidth == 584) {
                     if (e.x <= 510 && e.x >= 500 && width >= 1024) updatePlaylistTabWidth(420);
+                    else if (e.x > 280 && e.x <= 420) updatePlaylistTabWidth(e.x);
                 } else {
                     if (e.x > 280) updatePlaylistTabWidth(e.x > 420 ? 420 : e.x);
                     else if (e.x >= 180) updatePlaylistTabWidth(280);
-                    else if (e.x <= 170) updatePlaylistTabWidth(72);
                 }
             }
         }
