@@ -136,7 +136,7 @@ export default function Navigation(props: React.ComponentProps<"div">) {
                                         size={16}
                                     />
                                     <Tooltip className="-left-16 bottom-11 hidden group-hover/btn-library:block">
-                                        Show more
+                                        Show less
                                     </Tooltip>
                                 </button>
                             </span>
