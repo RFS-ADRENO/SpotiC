@@ -3,25 +3,32 @@ import { useHolding, useWindowDimensions } from "../hooks";
 import { useLayoutStore } from "../stores/layout";
 import Navigation from "../views/home/Navigation";
 import NavigationExpanded from "../views/home/NavigationExpanded";
+import HomeHeader from "../views/home/HomeHeader";
+import HomeMain from "../views/home/HomeMain";
 
 export default function Home() {
     const { width } = useWindowDimensions();
-    const { playlistTabWidth, mainTabWidth, playingTabWidth, setPlaylistTabWidth } =
+    const { playlistTabWidth, mainTabWidth, playingTabWidth, setPlaylistTabWidth, setMainTabWidth } =
         useLayoutStore();
     const resizeBarOneRef = useRef<HTMLDivElement>(null);
     const resizeBarOneIsHolding = useHolding(resizeBarOneRef);
 
+    function updatePlaylistTabWidth(n: number) {
+        setPlaylistTabWidth(n);
+        setMainTabWidth(width - n);
+    }
+
     useEffect(() => {
         function handleMouseMove(e: MouseEvent) {
             if (resizeBarOneIsHolding) {
-                if (e.x > 584 && width >= 1024) setPlaylistTabWidth(e.x > 592 ? 592 : e.x);
-                else if (e.x > 520 && width >= 1024) setPlaylistTabWidth(584);
+                if (e.x > 584 && width >= 1024) updatePlaylistTabWidth(e.x > 592 ? 592 : e.x);
+                else if (e.x > 520 && width >= 1024) updatePlaylistTabWidth(584);
                 else if (playlistTabWidth == 584) {
-                    if (e.x <= 510 && e.x >= 500 && width >= 1024) setPlaylistTabWidth(420);
+                    if (e.x <= 510 && e.x >= 500 && width >= 1024) updatePlaylistTabWidth(420);
                 } else {
-                    if (e.x > 280) setPlaylistTabWidth(e.x > 420 ? 420 : e.x);
-                    else if (e.x >= 180) setPlaylistTabWidth(280);
-                    else if (e.x <= 170) setPlaylistTabWidth(72);
+                    if (e.x > 280) updatePlaylistTabWidth(e.x > 420 ? 420 : e.x);
+                    else if (e.x >= 180) updatePlaylistTabWidth(280);
+                    else if (e.x <= 170) updatePlaylistTabWidth(72);
                 }
             }
         }
@@ -73,7 +80,10 @@ export default function Home() {
                         ></div>
                     </div>
                     <div className="flex-1 bg-primary rounded-lg overflow-hidden">
-                        <div className="h-83 bg-gradient-to-b from-[rgb(83,83,83)] from-10% brightness-[0.4]"></div>
+                        <div className="h-83 bg-gradient-to-b from-[rgba(83,83,83,0.2)] from-10%">
+                            <HomeHeader />
+                            <HomeMain />
+                        </div>
                     </div>
                     {/* <div className="w-2"></div>
                     <div className="min-w-70"></div> */}

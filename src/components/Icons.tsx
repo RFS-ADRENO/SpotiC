@@ -222,3 +222,67 @@ export function LeftArrow(props: TIconProps) {
         </svg>
     );
 }
+
+export function Back(props: TIconProps) {
+    const size = props.size ?? 24;
+    return (
+        <svg
+            {...props}
+            height={size}
+            width={size}
+            role="img"
+            className={`transition-[fill] duration-300 ${props.className ?? ""}`}
+            viewBox="0 0 16 16"
+        >
+            <path d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"></path>
+        </svg>
+    );
+}
+
+export function Forward(props: TIconProps) {
+    const size = props.size ?? 24;
+    return (
+        <svg
+            {...props}
+            height={size}
+            width={size}
+            role="img"
+            className={`transition-[fill] duration-300 ${props.className ?? ""}`}
+            viewBox="0 0 16 16"
+        >
+            <path d="M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"></path>
+        </svg>
+    );
+}
+
+export function Bell(props: TIconProps) {
+    const size = props.size ?? 24;
+    return (
+        <svg
+            {...props}
+            height={size}
+            width={size}
+            role="img"
+            className={`transition-[fill] duration-300 ${props.className ?? ""}`}
+            viewBox="0 0 16 16"
+        >
+            <path d="M8 1.5a4 4 0 0 0-4 4v3.27a.75.75 0 0 1-.1.373L2.255 12h11.49L12.1 9.142a.75.75 0 0 1-.1-.374V5.5a4 4 0 0 0-4-4zm-5.5 4a5.5 5.5 0 0 1 11 0v3.067l2.193 3.809a.75.75 0 0 1-.65 1.124H10.5a2.5 2.5 0 0 1-5 0H.957a.75.75 0 0 1-.65-1.124L2.5 8.569V5.5zm4.5 8a1 1 0 1 0 2 0H7z"></path>
+        </svg>
+    );
+}
+
+export function Play(props: TIconProps) {
+    const size = props.size ?? 24;
+    return (
+        <svg
+            {...props}
+            height={size}
+            width={size}
+            role="img"
+            className={`transition-[fill] duration-300 ${props.className ?? ""}`}
+            viewBox="0 0 16 16"
+        >
+            <path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path>
+        </svg>
+    );
+}
