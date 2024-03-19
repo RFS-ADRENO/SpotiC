@@ -143,13 +143,13 @@ export default function Navigation(props: React.ComponentProps<"div">) {
                         </div>
                         <div className="h-12 w-full flex items-center pl-4">
                             <div className="">
-                                <button className="mr-2 px-3 py-1 bg-[#232323] text-[14px] rounded-full">
+                                <button className="mr-2 px-3 py-1 bg-[#232323] text-[14px] rounded-full hover:bg-[hsla(0,0%,100%,.1)] transition-all duration-200">
                                     Playlists
                                 </button>
-                                <button className="mr-2 px-3 py-1 bg-[#232323] text-[14px] rounded-full">
+                                <button className="mr-2 px-3 py-1 bg-[#232323] text-[14px] rounded-full hover:bg-[hsla(0,0%,100%,.1)] transition-all duration-200">
                                     Artists
                                 </button>
-                                <button className=" px-3 py-1 bg-[#232323] text-[14px] rounded-full">
+                                <button className=" px-3 py-1 bg-[#232323] text-[14px] rounded-full hover:bg-[hsla(0,0%,100%,.1)] transition-all duration-200">
                                     Albums
                                 </button>
                             </div>
