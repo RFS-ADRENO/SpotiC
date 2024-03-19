@@ -10,8 +10,7 @@ export default function HomeMain() {
     return (
         <div className="relative px-6 mt-2" ref={containerRef}>
             <div
-                className="sticky flex gap-2 data-[large=true]:gap-4 text-sm top-0"
-                data-large={mainTabWidth > 862}
+                className="sticky flex gap-2 text-sm top-0"
             >
                 <button className="bg-white text-black rounded-full py-1 px-3 hover:opacity-95 transition-all">
                     All
@@ -24,7 +23,7 @@ export default function HomeMain() {
                 </button>
             </div>
             <div className="mt-7">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 data-[large=true]:grid-cols-4 gap-3"data-large={mainTabWidth > 862}>
                     <Link
                         to={"/collection/tracks"}
                         className="relative group h-12 xl:h-16 flex items-center rounded-[4px] overflow-x-hidden"
