@@ -8,6 +8,7 @@ import FilterContextMenu from "./FilterContextMenu";
 
 export default function Navigation(props: React.ComponentProps<"div">) {
     const setPlaylistTabWidth = useLayoutStore((s) => s.setPlaylistTabWidth);
+    const playlistTabWidth = useLayoutStore((s) => s.playlistTabWidth);
     const [searchOpen, setSearchOpen] = useState(false);
     const [showFilterContextMenu, setShowFilterContextMenu] = useState(false);
     const [sortBy, setSortBy] = useState<SortBy>(SortBy.Recents);
@@ -76,7 +77,7 @@ export default function Navigation(props: React.ComponentProps<"div">) {
             >
                 <div>
                     <div>
-                        <div className="h-14 w-full flex items-center px-4 py-2">
+                        <div className="h-14 w-full flex items-center gap-2 px-4 py-2">
                             <div className="size-full flex items-center justify-start">
                                 <button
                                     className="group/btn-library relative h-full px-2 py-1 flex items-center"
@@ -102,6 +103,40 @@ export default function Navigation(props: React.ComponentProps<"div">) {
                                     />
                                     <Tooltip className="-left-16 bottom-11 hidden group-hover/btn-library:block">
                                         Create playlist or folder
+                                    </Tooltip>
+                                </button>
+                            </span>
+                            <span
+                                className="h-8 hidden lg:block data-[hidden=true]:hidden"
+                                data-hidden={playlistTabWidth > 420}
+                            >
+                                <button
+                                    className="group/btn-library relative size-8 px-2 py-1 flex items-center rounded-full hover:bg-[#1a1a1a]"
+                                    onClick={() => setPlaylistTabWidth(584)}
+                                >
+                                    <Icons.RightArrow
+                                        className="fill-subdued group-hover/btn-library:fill-white size-4"
+                                        size={16}
+                                    />
+                                    <Tooltip className="-left-16 bottom-11 hidden group-hover/btn-library:block">
+                                        Show more
+                                    </Tooltip>
+                                </button>
+                            </span>
+                            <span
+                                className="h-8 hidden lg:block data-[hidden=true]:hidden"
+                                data-hidden={playlistTabWidth <= 420}
+                            >
+                                <button
+                                    className="group/btn-library relative size-8 px-2 py-1 flex items-center rounded-full hover:bg-[#1a1a1a]"
+                                    onClick={() => setPlaylistTabWidth(420)}
+                                >
+                                    <Icons.LeftArrow
+                                        className="fill-subdued group-hover/btn-library:fill-white size-4"
+                                        size={16}
+                                    />
+                                    <Tooltip className="-left-16 bottom-11 hidden group-hover/btn-library:block">
+                                        Show more
                                     </Tooltip>
                                 </button>
                             </span>

@@ -190,3 +190,35 @@ export function Tick(props: TIconProps) {
         </svg>
     );
 }
+
+export function RightArrow(props: TIconProps) {
+    const size = props.size ?? 24;
+    return (
+        <svg
+            {...props}
+            height={size}
+            width={size}
+            role="img"
+            className={`transition-[fill] duration-300 ${props.className ?? ""}`}
+            viewBox="0 0 16 16"
+        >
+            <path d="M7.19 1A.749.749 0 0 1 8.47.47L16 7.99l-7.53 7.521a.75.75 0 0 1-1.234-.815.75.75 0 0 1 .174-.243l5.72-5.714H.75a.75.75 0 1 1 0-1.498h12.38L7.41 1.529a.749.749 0 0 1-.22-.53z"></path>
+        </svg>
+    );
+}
+
+export function LeftArrow(props: TIconProps) {
+    const size = props.size ?? 24;
+    return (
+        <svg
+            {...props}
+            height={size}
+            width={size}
+            role="img"
+            className={`transition-[fill] duration-300 ${props.className ?? ""}`}
+            viewBox="0 0 16 16"
+        >
+            <path d="M8.81 1A.749.749 0 0 0 7.53.47L0 7.99l7.53 7.521a.75.75 0 0 0 1.234-.815.75.75 0 0 0-.174-.243L2.87 8.74h12.38a.75.75 0 1 0 0-1.498H2.87l5.72-5.713c.14-.14.22-.331.22-.53z"></path>
+        </svg>
+    );
+}

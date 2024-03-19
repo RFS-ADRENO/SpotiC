@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
-import { useHolding } from "../hooks/useHolding";
+import { useHolding, useWindowDimensions } from "../hooks";
 import { useLayoutStore } from "../stores/layout";
 import Navigation from "../views/home/Navigation";
 import NavigationExpanded from "../views/home/NavigationExpanded";
 
 export default function Home() {
+    const { width } = useWindowDimensions();
     const { playlistTabWidth, mainTabWidth, playingTabWidth, setPlaylistTabWidth } =
         useLayoutStore();
     const resizeBarOneRef = useRef<HTMLDivElement>(null);
@@ -13,9 +14,15 @@ export default function Home() {
     useEffect(() => {
         function handleMouseMove(e: MouseEvent) {
             if (resizeBarOneIsHolding) {
-                if (e.x > 280) setPlaylistTabWidth(e.x > 420 ? 420 : e.x);
-                else if (e.x >= 180) setPlaylistTabWidth(280);
-                else if (e.x <= 170) setPlaylistTabWidth(72);
+                if (e.x > 584 && width >= 1024) setPlaylistTabWidth(e.x > 592 ? 592 : e.x);
+                else if (e.x > 520 && width >= 1024) setPlaylistTabWidth(584);
+                else if (playlistTabWidth == 584) {
+                    if (e.x <= 510 && e.x >= 500 && width >= 1024) setPlaylistTabWidth(420);
+                } else {
+                    if (e.x > 280) setPlaylistTabWidth(e.x > 420 ? 420 : e.x);
+                    else if (e.x >= 180) setPlaylistTabWidth(280);
+                    else if (e.x <= 170) setPlaylistTabWidth(72);
+                }
             }
         }
 
@@ -25,7 +32,7 @@ export default function Home() {
         return () => {
             document.removeEventListener("mousemove", handleMouseMove);
         };
-    }, [resizeBarOneIsHolding]);
+    }, [playlistTabWidth, resizeBarOneIsHolding]);
 
     return (
         <div
