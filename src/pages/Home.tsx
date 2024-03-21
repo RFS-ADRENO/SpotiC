@@ -8,14 +8,23 @@ import HomeMain from "../views/home/HomeMain";
 
 export default function Home() {
     const { width } = useWindowDimensions();
-    const { playlistTabWidth, mainTabWidth, playingTabWidth, setPlaylistTabWidth, setMainTabWidth } =
-        useLayoutStore();
+    const {
+        playlistTabWidth,
+        mainTabWidth,
+        playingTabWidth,
+        setPlaylistTabWidth,
+        setMainTabWidth,
+    } = useLayoutStore();
     const resizeBarOneRef = useRef<HTMLDivElement>(null);
     const resizeBarOneIsHolding = useHolding(resizeBarOneRef);
+    const mainTabRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        setMainTabWidth(mainTabRef.current!.getBoundingClientRect().width);
+    }, [playlistTabWidth]);
 
     function updatePlaylistTabWidth(n: number) {
         setPlaylistTabWidth(n);
-        setMainTabWidth(width - n);
     }
 
     useEffect(() => {
@@ -80,7 +89,7 @@ export default function Home() {
                             }`}
                         ></div>
                     </div>
-                    <div className="flex-1 bg-primary rounded-lg overflow-hidden">
+                    <div className="flex-1 bg-primary rounded-lg overflow-hidden" ref={mainTabRef}>
                         <div className="h-83 bg-gradient-to-b from-[rgba(83,83,83,0.2)] from-10%">
                             <HomeHeader />
                             <HomeMain />
